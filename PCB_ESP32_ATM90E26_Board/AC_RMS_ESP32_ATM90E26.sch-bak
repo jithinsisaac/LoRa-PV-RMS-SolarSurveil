@@ -1,0 +1,897 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 2
+Title "Single Phase AC Energy Monitoring ESP32+ATM90+EmonLib"
+Date "2021-02-05"
+Rev "V2"
+Comp "Don Bosco Institue of Technology, Mumbai"
+Comment1 "IEEE SIGHT MTT-S Funded Project (LoRaPV RMS)"
+Comment2 "jithin.dbit@dbclmumbai.org"
+Comment3 "Prof. Jithin Saji Isaac "
+Comment4 "Adish Sthalekar | Keith Barnes | Shreyas Kulkarni"
+$EndDescr
+NoConn ~ 4775 2875
+NoConn ~ 4775 2975
+NoConn ~ 4775 3075
+NoConn ~ 4775 3175
+NoConn ~ 4775 3275
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C13
+U 1 1 601B2233
+P 1525 2175
+F 0 "C13" H 1660 2221 50  0000 L CNN
+F 1 "0.1uF" H 1660 2130 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1525 2175 60  0001 C CNN
+F 3 "" H 1525 2175 60  0000 C CNN
+F 4 "C49678" H 1715 2295 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 1525 2175 50  0001 C CNN "Manufacturing Part No MPN"
+	1    1525 2175
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1 C7
+U 1 1 601B3192
+P 1125 2175
+F 0 "C7" H 1325 2150 50  0000 R CNN
+F 1 "10uF" H 1400 2225 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1125 2175 50  0001 C CNN
+F 3 "~" H 1125 2175 50  0001 C CNN
+F 4 "C15850" H 1260 2025 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 1125 2175 50  0001 C CNN "Manufacturing Part No MPN"
+	1    1125 2175
+	-1   0    0    1   
+$EndComp
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C15
+U 1 1 601B7E27
+P 1575 2775
+F 0 "C15" H 1710 2821 50  0000 L CNN
+F 1 "0.1uF" H 1710 2730 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1575 2775 60  0001 C CNN
+F 3 "" H 1575 2775 60  0000 C CNN
+F 4 "C49678" H 1405 2870 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 1575 2775 50  0001 C CNN "Manufacturing Part No MPN"
+	1    1575 2775
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1125 1975 1125 2025
+Connection ~ 1525 1975
+Wire Wire Line
+	1525 1975 1125 1975
+Wire Wire Line
+	2025 1975 2025 2275
+Wire Wire Line
+	1525 1975 2025 1975
+Wire Wire Line
+	2575 2375 2475 2375
+Wire Wire Line
+	2025 2375 2025 2425
+Wire Wire Line
+	2025 2425 1525 2425
+Wire Wire Line
+	1125 2425 1125 2325
+Wire Wire Line
+	1525 2375 1525 2425
+Connection ~ 1525 2425
+Wire Wire Line
+	1525 2425 1125 2425
+Wire Wire Line
+	975  2425 975  2500
+Connection ~ 1125 2425
+Connection ~ 1575 2575
+Wire Wire Line
+	1575 2575 2200 2575
+Wire Wire Line
+	1575 2975 1825 2975
+Wire Wire Line
+	1975 2975 1975 2675
+Wire Wire Line
+	1975 2675 2575 2675
+Wire Wire Line
+	2575 2475 2475 2475
+Wire Wire Line
+	2475 2475 2475 2375
+Connection ~ 2475 2375
+Wire Wire Line
+	2475 2375 2025 2375
+Wire Wire Line
+	2575 2775 2375 2775
+Wire Wire Line
+	2575 2875 2375 2875
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C16
+U 1 1 601C00EC
+P 2125 3675
+F 0 "C16" H 2250 3750 50  0000 L CNN
+F 1 "0.1uF" H 2225 3600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2125 3675 60  0001 C CNN
+F 3 "" H 2125 3675 60  0000 C CNN
+F 4 "C49678" H 2095 3540 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 2125 3675 50  0001 C CNN "Manufacturing Part No MPN"
+	1    2125 3675
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1 C17
+U 1 1 601C08F7
+P 1725 3675
+F 0 "C17" H 1825 3750 50  0000 L CNN
+F 1 "10uF" H 1825 3600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1725 3675 50  0001 C CNN
+F 3 "~" H 1725 3675 50  0001 C CNN
+F 4 "C15850" H 1585 3555 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 1725 3675 50  0001 C CNN "Manufacturing Part No MPN"
+	1    1725 3675
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2575 3375 2125 3375
+Wire Wire Line
+	1725 3375 1725 3425
+Wire Wire Line
+	2125 3475 2125 3375
+Connection ~ 2125 3375
+Wire Wire Line
+	2125 3375 1725 3375
+Wire Wire Line
+	1725 3825 1725 3925
+Wire Wire Line
+	1725 3925 2125 3925
+Wire Wire Line
+	2125 3925 2125 3875
+Wire Wire Line
+	2475 3925 2475 3475
+Wire Wire Line
+	2475 3475 2575 3475
+Connection ~ 2125 3925
+$Comp
+L power:GND #PWR05
+U 1 1 601C90CA
+P 1825 2975
+F 0 "#PWR05" H 1825 2725 50  0001 C CNN
+F 1 "GND" H 1830 2802 50  0000 C CNN
+F 2 "" H 1825 2975 50  0001 C CNN
+F 3 "" H 1825 2975 50  0001 C CNN
+	1    1825 2975
+	1    0    0    -1  
+$EndComp
+Connection ~ 1825 2975
+Wire Wire Line
+	1825 2975 1975 2975
+Text Label 2375 2875 0    51   ~ 0
+I2N
+Wire Wire Line
+	2325 2975 2575 2975
+Text Label 2375 2775 0    51   ~ 0
+I2P
+$Comp
+L Device:Crystal Y1
+U 1 1 601D5E1F
+P 5750 1075
+F 0 "Y1" H 5700 1225 50  0000 L CNN
+F 1 "8.192 MHz" H 5550 1300 39  0000 L CNN
+F 2 "Crystal:Crystal_SMD_HC49-SD_HandSoldering" H 5750 1075 50  0001 C CNN
+F 3 "~" H 5750 1075 50  0001 C CNN
+F 4 "C259042" H 5755 910 50  0000 C CNN "LCSC"
+F 5 "X49SM8192MSD2SC-1" H 5750 1075 50  0001 C CNN "Manufacturing Part No MPN"
+	1    5750 1075
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5900 1075 5975 1075
+Wire Wire Line
+	5600 1075 5550 1075
+$Comp
+L power:GND #PWR013
+U 1 1 601DD652
+P 5750 1775
+F 0 "#PWR013" H 5750 1525 50  0001 C CNN
+F 1 "GND" V 5755 1647 50  0000 R CNN
+F 2 "" H 5750 1775 50  0001 C CNN
+F 3 "" H 5750 1775 50  0001 C CNN
+	1    5750 1775
+	1    0    0    -1  
+$EndComp
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C12
+U 1 1 601D87C3
+P 5550 1500
+F 0 "C12" H 5700 1425 50  0000 C CNN
+F 1 "27pF" H 5650 1600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5550 1500 60  0001 C CNN
+F 3 "" H 5550 1500 60  0000 C CNN
+F 4 "C8031" H 5715 1285 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 5550 1500 50  0001 C CNN "Manufacturing Part No MPN"
+	1    5550 1500
+	-1   0    0    1   
+$EndComp
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C11
+U 1 1 601D7CED
+P 5975 1500
+F 0 "C11" H 5825 1425 50  0000 C CNN
+F 1 "27pF" H 5825 1600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5975 1500 60  0001 C CNN
+F 3 "" H 5975 1500 60  0000 C CNN
+F 4 "C8031" H 5545 1505 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 5975 1500 50  0001 C CNN "Manufacturing Part No MPN"
+	1    5975 1500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5550 1075 5550 1300
+Wire Wire Line
+	5975 1075 5975 1300
+Wire Wire Line
+	5975 1700 5975 1775
+Wire Wire Line
+	5975 1775 5750 1775
+Wire Wire Line
+	5550 1775 5550 1700
+Connection ~ 5750 1775
+Wire Wire Line
+	5750 1775 5550 1775
+Wire Wire Line
+	5550 1075 5550 825 
+Connection ~ 5550 1075
+Wire Wire Line
+	5975 1075 5975 825 
+Connection ~ 5975 1075
+Text Label 5550 825  3    51   ~ 0
+OSCO
+Text Label 5975 825  3    51   ~ 0
+OSCI
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C9
+U 1 1 601C5292
+P 6275 3150
+F 0 "C9" H 6175 3075 50  0000 C CNN
+F 1 "33nF" H 6150 3250 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6275 3150 60  0001 C CNN
+F 3 "" H 6275 3150 60  0000 C CNN
+F 4 "C1739" H 6295 3000 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 6275 3150 50  0001 C CNN "Manufacturing Part No MPN"
+	1    6275 3150
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5350 3275 5350 3500
+Wire Wire Line
+	5350 3500 5700 3500
+Wire Wire Line
+	5700 3500 5700 3375
+Wire Wire Line
+	5700 3500 5950 3500
+Wire Wire Line
+	6275 3500 6275 3350
+Connection ~ 5700 3500
+$Comp
+L Device:R R12
+U 1 1 601C45DB
+P 6675 3150
+F 0 "R12" H 6605 3104 50  0000 R CNN
+F 1 "1.8K" H 6605 3195 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6605 3150 50  0001 C CNN
+F 3 "~" H 6675 3150 50  0001 C CNN
+F 4 "C17398" H 6615 2960 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 6675 3150 50  0001 C CNN "Manufacturing Part No MPN"
+	1    6675 3150
+	-1   0    0    1   
+$EndComp
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C10
+U 1 1 601C4D30
+P 5700 3175
+F 0 "C10" H 5600 3100 50  0000 C CNN
+F 1 "33nF" H 5575 3250 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5700 3175 60  0001 C CNN
+F 3 "" H 5700 3175 60  0000 C CNN
+F 4 "C1739" H 5530 3015 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 5700 3175 50  0001 C CNN "Manufacturing Part No MPN"
+	1    5700 3175
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6275 3500 6675 3500
+Wire Wire Line
+	6675 3500 6675 3300
+Connection ~ 6275 3500
+$Comp
+L power:GND #PWR012
+U 1 1 601EF1EA
+P 5950 3500
+F 0 "#PWR012" H 5950 3250 50  0001 C CNN
+F 1 "GND" V 5955 3372 50  0000 R CNN
+F 2 "" H 5950 3500 50  0001 C CNN
+F 3 "" H 5950 3500 50  0001 C CNN
+	1    5950 3500
+	1    0    0    -1  
+$EndComp
+Connection ~ 5950 3500
+Wire Wire Line
+	5950 3500 6275 3500
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:JUMPER-PAD-3-NOFULL_BOX_SILK-ATM90E26_Featherwing-eagle-import-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue SJ2
+U 1 1 601D4961
+P 3375 1300
+F 0 "SJ2" H 3453 1353 59  0000 L CNN
+F 1 "JUMPER-PAD-3-NOFULL_BOX_SILK" H 1625 1225 59  0001 L CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm" H 3375 1300 50  0001 C CNN
+F 3 "" H 3375 1300 50  0001 C CNN
+	1    3375 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:JUMPER-PAD-3-NOFULL_BOX_SILK-ATM90E26_Featherwing-eagle-import-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue SJ3
+U 1 1 601D6470
+P 4100 1300
+F 0 "SJ3" H 4177 1247 59  0000 L CNN
+F 1 "JUMPER-PAD-3-NOFULL_BOX_SILK" H 2175 1175 59  0001 L CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm" H 4100 1300 50  0001 C CNN
+F 3 "" H 4100 1300 50  0001 C CNN
+	1    4100 1300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2575 2175 2500 2175
+Wire Wire Line
+	2500 2175 2500 1300
+Wire Wire Line
+	2500 1300 3175 1300
+Wire Wire Line
+	4300 1300 4900 1300
+Wire Wire Line
+	4900 1300 4900 2175
+Wire Wire Line
+	4900 2175 4775 2175
+Wire Wire Line
+	3375 1500 3375 1575
+Wire Wire Line
+	3375 1575 3775 1575
+Wire Wire Line
+	4100 1575 4100 1500
+Wire Wire Line
+	4100 950  4100 1100
+$Comp
+L power:GND #PWR010
+U 1 1 60207D94
+P 3775 1575
+F 0 "#PWR010" H 3775 1325 50  0001 C CNN
+F 1 "GND" H 3975 1475 50  0000 R CNN
+F 2 "" H 3775 1575 50  0001 C CNN
+F 3 "" H 3775 1575 50  0001 C CNN
+	1    3775 1575
+	1    0    0    -1  
+$EndComp
+Connection ~ 3775 1575
+Wire Wire Line
+	3775 1575 4100 1575
+Wire Notes Line width 10
+	11125 6425 6875 6425
+Wire Notes Line width 10
+	6875 7700 600  7700
+Wire Notes Line width 10
+	600  575  600  7700
+Text Notes 4025 4000 0    79   ~ 16
+ATM90E26 CIRCUIT
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:JUMPER-PAD-3-NOFULL_BOX_SILK-ATM90E26_Featherwing-eagle-import-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue SJ1
+U 1 1 601CBDA4
+P 1225 3275
+F 0 "SJ1" H 1303 3328 59  0000 L CNN
+F 1 "JUMPER-PAD-3-NOFULL_BOX_SILK" H -525 3200 59  0001 L CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm" H 1225 3275 50  0001 C CNN
+F 3 "" H 1225 3275 50  0001 C CNN
+	1    1225 3275
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1425 3275 2575 3275
+Wire Wire Line
+	1225 3475 1225 3575
+$Comp
+L power:GND #PWR03
+U 1 1 601E0095
+P 1225 3575
+F 0 "#PWR03" H 1225 3325 50  0001 C CNN
+F 1 "GND" H 1230 3402 50  0000 C CNN
+F 2 "" H 1225 3575 50  0001 C CNN
+F 3 "" H 1225 3575 50  0001 C CNN
+	1    1225 3575
+	1    0    0    -1  
+$EndComp
+Text GLabel 4875 2375 2    50   Input ~ 0
+ESP_RX1
+Text GLabel 4875 2275 2    50   Input ~ 0
+ESP_TX1
+Wire Wire Line
+	4775 2675 5025 2675
+Wire Wire Line
+	4775 2775 5025 2775
+Wire Wire Line
+	975  2425 1125 2425
+Wire Wire Line
+	2575 2275 2025 2275
+Wire Wire Line
+	975  2575 1575 2575
+$Comp
+L power:GND #PWR04
+U 1 1 602F8C3D
+P 1525 1975
+F 0 "#PWR04" H 1525 1725 50  0001 C CNN
+F 1 "GND" H 1530 1802 50  0000 C CNN
+F 2 "" H 1525 1975 50  0001 C CNN
+F 3 "" H 1525 1975 50  0001 C CNN
+	1    1525 1975
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4850 3475 4775 3475
+Wire Wire Line
+	4775 3375 4850 3375
+Text GLabel 4850 3475 2    50   Input ~ 0
+VN
+Text GLabel 4850 3375 2    50   Input ~ 0
+VP
+Text GLabel 6675 2775 1    50   Input ~ 0
+VN
+Wire Wire Line
+	4775 2275 4875 2275
+Wire Wire Line
+	4775 2375 4875 2375
+Text GLabel 5700 2775 1    50   Input ~ 0
+VP
+$Comp
+L Device:R R11
+U 1 1 601C3E35
+P 5350 3125
+F 0 "R11" H 5280 3079 50  0000 R CNN
+F 1 "1.8K" H 5280 3170 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5280 3125 50  0001 C CNN
+F 3 "~" H 5350 3125 50  0001 C CNN
+F 4 "C17398" H 5410 2960 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 5350 3125 50  0001 C CNN "Manufacturing Part No MPN"
+	1    5350 3125
+	-1   0    0    1   
+$EndComp
+Text GLabel 5350 2775 1    50   Input ~ 0
+VP
+Wire Wire Line
+	6675 3000 6675 2775
+Text GLabel 6275 2775 1    50   Input ~ 0
+VN
+Connection ~ 975  2500
+Wire Wire Line
+	975  2500 975  2575
+Wire Wire Line
+	5350 2775 5350 2975
+Wire Wire Line
+	5700 2775 5700 2975
+Wire Wire Line
+	6275 2950 6275 2775
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:ATM90E26-YU-B-atm90-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue U2
+U 1 1 601D54D0
+P 2575 2175
+F 0 "U2" H 3675 2562 60  0000 C CNN
+F 1 "ATM90E26-YU-B" H 3675 2456 60  0000 C CNN
+F 2 "atm_footprint:SSOP-28" H 3675 2415 60  0001 C CNN
+F 3 "" H 2575 2175 60  0000 C CNN
+F 4 " C145595" H 2575 2175 50  0000 C CNN "LCSC"
+F 5 "ATM90E26-YU-R" H 2575 2175 50  0001 C CNN "Manufacturing Part No MPN"
+	1    2575 2175
+	1    0    0    -1  
+$EndComp
+Connection ~ 1725 3425
+Wire Wire Line
+	1725 3425 1725 3525
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 601D766F
+P 1725 3425
+F 0 "#FLG01" H 1725 3500 50  0001 C CNN
+F 1 "PWR_FLAG" V 1725 3552 28  0000 L CNN
+F 2 "" H 1725 3425 50  0001 C CNN
+F 3 "~" H 1725 3425 50  0001 C CNN
+	1    1725 3425
+	0    -1   -1   0   
+$EndComp
+Text Label 5025 2775 2    51   ~ 0
+OSCI
+Text Label 5025 2675 2    51   ~ 0
+OSCO
+Wire Wire Line
+	3375 950  3375 1100
+NoConn ~ 2375 2775
+NoConn ~ 2375 2875
+Wire Notes Line
+	6875 575  6875 7700
+NoConn ~ 4775 2475
+NoConn ~ 4775 2575
+Text GLabel 2225 3175 0    50   Input ~ 0
+I1P
+Text GLabel 2225 3075 0    50   Input ~ 0
+I1N
+$Comp
+L power:GND #PWR07
+U 1 1 601C80EF
+P 2325 2975
+F 0 "#PWR07" H 2325 2725 50  0001 C CNN
+F 1 "GND" V 2330 2847 50  0000 R CNN
+F 2 "" H 2325 2975 50  0001 C CNN
+F 3 "" H 2325 2975 50  0001 C CNN
+	1    2325 2975
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2225 3075 2575 3075
+Wire Wire Line
+	2225 3175 2575 3175
+Wire Wire Line
+	3375 950  3775 950 
+Wire Wire Line
+	3775 825  3775 950 
+Connection ~ 3775 950 
+Wire Wire Line
+	3775 950  4100 950 
+Wire Wire Line
+	1225 2850 1225 3075
+Wire Wire Line
+	900  2500 975  2500
+Connection ~ 2275 3925
+Wire Wire Line
+	2275 3925 2475 3925
+Wire Wire Line
+	2125 3925 2275 3925
+$Comp
+L power:GND #PWR06
+U 1 1 601C77FD
+P 2275 3925
+F 0 "#PWR06" H 2275 3675 50  0001 C CNN
+F 1 "GND" H 2280 3752 50  0000 C CNN
+F 2 "" H 2275 3925 50  0001 C CNN
+F 3 "" H 2275 3925 50  0001 C CNN
+	1    2275 3925
+	1    0    0    -1  
+$EndComp
+Text GLabel 9060 5045 2    50   Input ~ 0
+VP
+Text Label 9185 1695 2    51   ~ 0
+I1P_IN
+Text Label 9185 1195 2    51   ~ 0
+I1N_IN
+Wire Wire Line
+	8835 1695 9185 1695
+Connection ~ 8835 1695
+Wire Wire Line
+	8835 1595 8835 1695
+Wire Wire Line
+	8835 1195 9185 1195
+Wire Wire Line
+	8835 1295 8835 1195
+$Comp
+L Device:R R13
+U 1 1 60695C7B
+P 8835 1445
+AR Path="/60695C7B" Ref="R13"  Part="1" 
+AR Path="/60635AC6/60695C7B" Ref="R?"  Part="1" 
+F 0 "R13" H 8905 1491 50  0000 L CNN
+F 1 "12R" H 8905 1400 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8765 1445 50  0001 C CNN
+F 3 "~" H 8835 1445 50  0001 C CNN
+F 4 "C25352" H 9030 1610 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 8835 1445 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8835 1445
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8585 1695 8835 1695
+Wire Wire Line
+	8835 2720 8985 2720
+Connection ~ 8835 2720
+Wire Wire Line
+	8835 2670 8835 2720
+Text Label 8060 3420 0    51   ~ 0
+I1P_IN
+Text Label 8060 2170 0    51   ~ 0
+I1N_IN
+$Comp
+L power:GND #PWR0101
+U 1 1 60695C89
+P 8985 2720
+AR Path="/60695C89" Ref="#PWR0101"  Part="1" 
+AR Path="/60635AC6/60695C89" Ref="#PWR?"  Part="1" 
+F 0 "#PWR0101" H 8985 2470 50  0001 C CNN
+F 1 "GND" V 8990 2592 50  0000 R CNN
+F 2 "" H 8985 2720 50  0001 C CNN
+F 3 "" H 8985 2720 50  0001 C CNN
+	1    8985 2720
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8360 3420 8060 3420
+Wire Wire Line
+	8360 2170 8060 2170
+Wire Wire Line
+	8835 3420 8660 3420
+Wire Wire Line
+	8835 3195 8835 3420
+Wire Wire Line
+	8835 2170 8835 2270
+Wire Wire Line
+	8660 2170 8835 2170
+$Comp
+L Device:R R15
+U 1 1 60695C95
+P 8510 3420
+AR Path="/60695C95" Ref="R15"  Part="1" 
+AR Path="/60635AC6/60695C95" Ref="R?"  Part="1" 
+F 0 "R15" V 8303 3420 50  0000 C CNN
+F 1 "100R" V 8394 3420 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8440 3420 50  0001 C CNN
+F 3 "~" H 8510 3420 50  0001 C CNN
+F 4 "C17901" V 8665 3575 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 8510 3420 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8510 3420
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R14
+U 1 1 60695C9B
+P 8510 2170
+AR Path="/60695C9B" Ref="R14"  Part="1" 
+AR Path="/60635AC6/60695C9B" Ref="R?"  Part="1" 
+F 0 "R14" V 8303 2170 50  0000 C CNN
+F 1 "100R" V 8394 2170 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8440 2170 50  0001 C CNN
+F 3 "~" H 8510 2170 50  0001 C CNN
+F 4 "C17901" H 8330 2355 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 8510 2170 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8510 2170
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8585 1520 8585 1695
+Text GLabel 9785 2170 2    50   Input ~ 0
+I1N
+Text GLabel 9860 3420 2    50   Input ~ 0
+I1P
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C8
+U 1 1 60695CAC
+P 8835 2470
+AR Path="/60695CAC" Ref="C8"  Part="1" 
+AR Path="/60635AC6/60695CAC" Ref="C?"  Part="1" 
+F 0 "C8" H 8660 2420 50  0000 C CNN
+F 1 "330nF" H 8635 2570 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8835 2470 60  0001 C CNN
+F 3 "" H 8835 2470 60  0000 C CNN
+F 4 "C1740" H 8640 2335 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 8835 2470 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8835 2470
+	-1   0    0    1   
+$EndComp
+$Comp
+L AC_RMS_ESP32_ATM90E26-rescue:CAP-freetronics_schematic-ATM90E26_DEV-rescue-AC_RMS_ESP32_ATM90E26-rescue-AC_RMS_ESP32_ATM90E26-rescue C18
+U 1 1 60695CB2
+P 8835 2995
+AR Path="/60695CB2" Ref="C18"  Part="1" 
+AR Path="/60635AC6/60695CB2" Ref="C?"  Part="1" 
+F 0 "C18" H 8660 2945 50  0000 C CNN
+F 1 "330nF" H 8660 3095 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8835 2995 60  0001 C CNN
+F 3 "" H 8835 2995 60  0000 C CNN
+F 4 "C1740" H 8460 3015 50  0000 C CNN "LCSC"
+F 5 "0805B104K500CT" H 8835 2995 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8835 2995
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8835 2720 8835 2795
+Wire Wire Line
+	8835 2170 9785 2170
+Connection ~ 8835 2170
+Wire Wire Line
+	8835 3420 9860 3420
+Connection ~ 8835 3420
+$Comp
+L Device:R R16
+U 1 1 60695CBD
+P 8785 4795
+AR Path="/60695CBD" Ref="R16"  Part="1" 
+AR Path="/60635AC6/60695CBD" Ref="R?"  Part="1" 
+F 0 "R16" H 8855 4841 50  0000 L CNN
+F 1 "100K" H 8855 4750 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8715 4795 50  0001 C CNN
+F 3 "~" H 8785 4795 50  0001 C CNN
+F 4 "C17900" H 8980 4975 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 8785 4795 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8785 4795
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R17
+U 1 1 60695CC3
+P 8785 5320
+AR Path="/60695CC3" Ref="R17"  Part="1" 
+AR Path="/60635AC6/60695CC3" Ref="R?"  Part="1" 
+F 0 "R17" H 8855 5366 50  0000 L CNN
+F 1 "1K" H 8855 5275 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8715 5320 50  0001 C CNN
+F 3 "~" H 8785 5320 50  0001 C CNN
+F 4 "C4410" H 8990 5450 50  0000 C CNN "LCSC"
+F 5 "0603SAF1001T5E" H 8785 5320 50  0001 C CNN "Manufacturing Part No MPN"
+	1    8785 5320
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8785 5045 8785 5170
+Connection ~ 8785 5045
+Wire Wire Line
+	8785 4945 8785 5045
+Wire Wire Line
+	8785 5645 8785 5470
+Wire Wire Line
+	8785 4470 8785 4645
+Wire Wire Line
+	8585 1520 8360 1520
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 60695CE7
+P 7930 990
+AR Path="/60635AC6/60695CE7" Ref="J?"  Part="1" 
+AR Path="/60695CE7" Ref="J11"  Part="1" 
+F 0 "J11" H 8005 1130 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 7865 630 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7930 990 50  0001 C CNN
+F 3 "~" H 7930 990 50  0001 C CNN
+F 4 "C124375 " H 7930 990 50  0001 C CNN "LCSC"
+	1    7930 990 
+	0    1    1    0   
+$EndComp
+Text GLabel 7665 1205 0    50   Input ~ 0
+CS
+Text GLabel 7665 1305 0    50   Input ~ 0
+CT
+Wire Wire Line
+	8785 5045 9060 5045
+Text Notes 8310 5945 0    89   ~ 18
+Voltage Sampling for ATM
+Wire Wire Line
+	3775 825  3840 825 
+Text GLabel 3840 825  2    50   Input ~ 0
+3V3_ATM
+Text GLabel 900  2500 0    50   Input ~ 0
+3V3_ATM
+Text GLabel 1225 2850 0    50   Input ~ 0
+3V3_ATM
+Text Notes 8200 3940 0    89   ~ 18
+Current Sampling for ATM
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 6066C1B5
+P 2200 2550
+F 0 "#FLG0102" H 2200 2625 50  0001 C CNN
+F 1 "PWR_FLAG" V 2200 2677 28  0000 L CNN
+F 2 "" H 2200 2550 50  0001 C CNN
+F 3 "~" H 2200 2550 50  0001 C CNN
+	1    2200 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 2550 2200 2575
+Connection ~ 2200 2575
+Wire Wire Line
+	2200 2575 2575 2575
+Wire Notes Line
+	600  4250 11225 4250
+Wire Notes Line
+	600  575  600  475 
+Wire Notes Line
+	6875 550  6875 475 
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 60695CCE
+P 7960 4895
+AR Path="/60635AC6/60695CCE" Ref="J?"  Part="1" 
+AR Path="/60695CCE" Ref="J14"  Part="1" 
+F 0 "J14" H 7935 4995 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 7900 4645 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7960 4895 50  0001 C CNN
+F 3 "~" H 7960 4895 50  0001 C CNN
+F 4 "C124375 " H 7960 4895 50  0001 C CNN "LCSC"
+	1    7960 4895
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7835 4690 0    50   Input ~ 0
+V2
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 60695CD4
+P 8060 4380
+AR Path="/60635AC6/60695CD4" Ref="J?"  Part="1" 
+AR Path="/60695CD4" Ref="J13"  Part="1" 
+F 0 "J13" H 8005 4455 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 7975 4035 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8060 4380 50  0001 C CNN
+F 3 "~" H 8060 4380 50  0001 C CNN
+F 4 "C124375 " H 8060 4380 50  0001 C CNN "LCSC"
+	1    8060 4380
+	0    1    1    0   
+$EndComp
+Text GLabel 7835 4590 0    50   Input ~ 0
+V1
+Wire Wire Line
+	8345 4470 8785 4470
+Wire Wire Line
+	8345 5645 8785 5645
+Wire Wire Line
+	8185 1190 8185 1205
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 60695CA2
+P 7820 1520
+AR Path="/60635AC6/60695CA2" Ref="J?"  Part="1" 
+AR Path="/60695CA2" Ref="J12"  Part="1" 
+F 0 "J12" H 7805 1595 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 7750 1245 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7820 1520 50  0001 C CNN
+F 3 "~" H 7820 1520 50  0001 C CNN
+F 4 "C124375 " H 7820 1520 50  0001 C CNN "LCSC"
+	1    7820 1520
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8360 1520 8360 1305
+Wire Wire Line
+	8185 1190 8835 1190
+Wire Wire Line
+	8835 1190 8835 1195
+Connection ~ 8835 1195
+$Sheet
+S 1350 4925 4750 2000
+U 60635AC6
+F0 "ESP32 + EmonLib circuitry" 50
+F1 "AC_RMS_ESP32_ATM90E26-2.sch" 50
+$EndSheet
+Wire Wire Line
+	7960 4590 7960 4580
+Wire Wire Line
+	7835 4590 7960 4590
+Wire Wire Line
+	7960 4690 7960 4695
+Wire Wire Line
+	7835 4690 7960 4690
+Wire Wire Line
+	8345 4590 8060 4590
+Wire Wire Line
+	8060 4590 8060 4580
+Wire Wire Line
+	8345 4470 8345 4590
+Wire Wire Line
+	8060 4685 8060 4695
+Wire Wire Line
+	8345 4685 8345 5645
+Wire Wire Line
+	8060 4685 8345 4685
+Wire Wire Line
+	7830 1205 7830 1190
+Wire Wire Line
+	7665 1205 7830 1205
+Wire Wire Line
+	7930 1190 7930 1205
+Wire Wire Line
+	7930 1205 8185 1205
+Wire Wire Line
+	7820 1305 7820 1320
+Wire Wire Line
+	7665 1305 7820 1305
+Wire Wire Line
+	7920 1305 7920 1320
+Wire Wire Line
+	7920 1305 8360 1305
+$EndSCHEMATC

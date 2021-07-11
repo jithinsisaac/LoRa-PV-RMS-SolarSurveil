@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name LoRaPV_RMS_WLR089U0_Board-rescue)(type Legacy)(uri ${KIPRJMOD}/LoRaPV_RMS_WLR089U0_Board-rescue.lib)(options "")(descr ""))
+)

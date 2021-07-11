@@ -1,0 +1,56 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+C1,10uF,C_1206_3216Metric_Pad1.42x1.75mm_HandSolder,123.444,-130.556,90,top
+C2,10uF,C_1206_3216Metric_Pad1.42x1.75mm_HandSolder,107.823,-106.553,0,top
+C3,100nF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,77.597,-78.105,0,top
+C4,22uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,113.665,-69.088,90,top
+C5,10uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,126.873,-69.342,90,top
+C6,100nF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,126.873,-74.676,270,top
+C7,10uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,74.422,-94.996,180,top
+C8,330nF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,118.364,-107.569,90,top
+C9,33nF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,130.175,-88.265,270,top
+C10,33nF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,133.096,-88.265,270,top
+C11,27pF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,118.491,-91.059,270,top
+C12,27pF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,112.268,-89.789,270,top
+C13,0.1uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,74.422,-92.202,0,top
+C15,0.1uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,74.422,-97.79,180,top
+C16,0.1uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,82.042,-91.186,270,top
+C17,10uF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,85.598,-91.186,270,top
+C18,330nF,C_0805_2012Metric_Pad1.15x1.40mm_HandSolder,115.189,-107.569,270,top
+D2,LED'1206',LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder,122.174,-76.2,180,top
+J1,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,105.156,-118.364,90,top
+J2,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,107.696,-114.554,270,top
+J3,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,97.79,-114.554,90,top
+J4,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,100.33,-118.364,270,top
+J5,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,78.994,-83.693,90,top
+J6,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,109.982,-82.677,90,top
+J7,AudioJack4,Jack_3.5mm_PJ320D_Horizontal,128.778,-113.919,180,top
+J8,Barrel_Jack_Switch,BarrelJack_CLIFF_FC681465S_SMT_Horizontal,79.883,-116.205,0,top
+J9,Connector_Conn_01x06_Female,PinHeader_1x06_P2.54mm_Vertical,110.744,-128.397,270,top
+J10,USB_B_Micro,MicroUSB-LCSC-C21377-Sunrom-4358,132.785,-72.535,90,top
+J11,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,115.062,-114.554,270,top
+J12,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,112.522,-118.364,90,top
+J13,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,92.964,-118.364,270,top
+J14,Conn_01x02_Male,PinHeader_1x02_P2.54mm_Vertical,90.424,-114.554,90,top
+R1,18,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,130.175,-127.381,180,top
+R2,470K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,130.175,-124.714,180,top
+R3,470K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,124.587,-124.714,180,top
+R4,100K,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,95.885,-106.045,270,top
+R5,10K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,93.218,-106.045,90,top
+R6,470K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,100.965,-107.315,180,top
+R7,470K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,100.965,-104.648,0,top
+R8,10K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,83.185,-76.708,90,top
+R9,1K,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,83.058,-70.739,270,top
+R10,1K,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,113.665,-74.422,270,top
+R11,1.8K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,132.842,-94.107,90,top
+R12,1.8K,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,130.302,-94.107,90,top
+R13,12R,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,123.063,-95.758,0,top
+R14,100R,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,121.666,-91.059,270,top
+R15,100R,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,125.095,-90.932,270,top
+R16,100K,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,84.074,-103.886,90,top
+R17,1K,R_1206_3216Metric_Pad1.42x1.75mm_HandSolder,86.741,-103.886,270,top
+U1,ESP32-WROOM-32,ESP32-WROOM-32,96.266,-76.454,0,top
+U2,ATM90E26-YU-B,SSOP-28,99.949,-94.107,270,top
+U3,AMS1117-3.3,SOT-223-3_TabPin2,120.015,-70.739,0,top
+Y1,8.192 MHz,Crystal_SMD_HC49-SD_HandSoldering,126.619,-81.407,180,top
+sw1,SW_Push,Tactile Switch 3x4x2mm,78.105,-71.501,270,top
+sw2,SW_Push,Tactile Switch 3x4x2mm,74.549,-71.501,90,top

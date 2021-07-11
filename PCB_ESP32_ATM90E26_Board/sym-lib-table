@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name AC_RMS_ESP32_ATM90E26-rescue)(type Legacy)(uri ${KIPRJMOD}/AC_RMS_ESP32_ATM90E26-rescue.lib)(options "")(descr ""))
+)
