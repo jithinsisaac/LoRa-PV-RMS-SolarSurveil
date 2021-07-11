@@ -3,20 +3,23 @@
 ## Project Duration: December 2019 to July 2021  
 
 ## Official Project Resources
-#### Website: [SolarSurveilDBIT.in](https://SolarSurveilDBIT.in)
-#### Analytical Web Device Management & Dashboard: Click [Sign Up / Login here](https://solarsurveildbit.in/index.html#services)
-#### Detailed Video: [@YouTube](https://youtu.be/FI_uH7AuqU8)  
-#### 3 minute video: [@YouTube](https://youtu.be/UwQO7I1e_y8)  
+- Website: [SolarSurveilDBIT.in](https://SolarSurveilDBIT.in)
+- Analytical Web Device Management & Dashboard: Click [Sign Up / Login here](https://solarsurveildbit.in/index.html#services)
+- Detailed Video: [@YouTube](https://youtu.be/FI_uH7AuqU8)  
+- 3 minute video: [@YouTube](https://youtu.be/UwQO7I1e_y8)  
 
 ## Project Team Members:      
-### Students & Faculty of Don Bosco Institute of Technology, Mumbai, India [www.dbit.in](https://dbit.in)
-### Student Team Members  
+**Students & Faculty of Dept. of EXTC, Don Bosco Institute of Technology, Mumbai, India** [www.dbit.in](https://dbit.in)  
+
+
+
+**Student Team Members**  
 1. Shreyas Kulkarni
 2. Keith Barnes
 3. Shreyas Kulkarni
 4. Aparna Kulkarni
 
-### Faculty Team Members
+**Faculty Team Members**
 1. Dr. Ashwini Kotrashetti
 2. Mr. Tayyabali Sayyad
 3. Ms. Gejo George
