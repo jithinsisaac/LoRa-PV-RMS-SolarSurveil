@@ -40,12 +40,12 @@
 
 ## Credits
 
- [Solar Surveil Web application & Dashboard](https://github.com/sdk694/SolarSurveil) by  [Shreyas Kulkarni](https://twitter.com/)  
- [Microchip WLR089U0 based LoRaWAN energy monitoring end node design](https://github.com/jithinsisaac/LoRa-PV-RMS-SolarSurveil/tree/main/PCB_WLR089U0_Board) by  [Keith Barnes](https://twitter.com/@sir_keith_)   
- [ESP32 ATM90E26 based Single Phase AC energy monitoring end node design](https://github.com/jithinsisaac/LoRa-PV-RMS-SolarSurveil/tree/main/PCB_ESP32_ATM90E26_Board) by [Adish Sthalekar](https://twitter.com/)     
- [Grafana, InfluxDB & NodeRED integrations](https://solarsurveildbit.in/blogak.html) by [Aparna Kulkarni](https://twitter.com/)  
- Project Ideation & Mentoring by [Dr. Ashwini Kotrashetti](http://ashwiniprofile-dbit.blogspot.com/)  
- Web application mentoring by [Tayyabali Sayyad](https://tayyabali.in/)  
- Project Guide, Solar Lab setup, Embedded-IoT, [LoRaWAN](https://github.com/search?q=user%3Ajithinsisaac+lora) & PCB design expertise by [Jithin Saji Isaac](https://jithinsisaac.github.io/)   
+- [Solar Surveil Web application & Dashboard](https://github.com/sdk694/SolarSurveil) by  [Shreyas Kulkarni](https://twitter.com/)  
+- [Microchip WLR089U0 based LoRaWAN energy monitoring end node design](https://github.com/jithinsisaac/LoRa-PV-RMS-SolarSurveil/tree/main/PCB_WLR089U0_Board) by  [Keith Barnes](https://twitter.com/@sir_keith_)   
+- [ESP32 ATM90E26 based Single Phase AC energy monitoring end node design](https://github.com/jithinsisaac/LoRa-PV-RMS-SolarSurveil/tree/main/PCB_ESP32_ATM90E26_Board) by [Adish Sthalekar](https://twitter.com/)     
+- [Grafana, InfluxDB & NodeRED integrations](https://solarsurveildbit.in/blogak.html) by [Aparna Kulkarni](https://twitter.com/)  
+- Project Ideation & Mentoring by [Dr. Ashwini Kotrashetti](http://ashwiniprofile-dbit.blogspot.com/)  
+- Web application mentoring by [Tayyabali Sayyad](https://tayyabali.in/)  
+- Project Guide, Solar Lab setup, Embedded-IoT, [LoRaWAN](https://github.com/search?q=user%3Ajithinsisaac+lora) & PCB design expertise by [Jithin Saji Isaac](https://jithinsisaac.github.io/)   
  
  
