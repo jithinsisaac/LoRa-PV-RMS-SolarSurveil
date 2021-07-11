@@ -3,10 +3,10 @@
 ## Project Duration: December 2019 to July 2021  
 
 ## Official Project Resources
-### Website: [SolarSurveilDBIT.in](https://SolarSurveilDBIT.in)
-### Analytical Web Device Management & Dashboard: Click [Sign Up / Login here](https://solarsurveildbit.in/index.html#services)
-### Detailed Video: [@YouTube](https://youtu.be/FI_uH7AuqU8)  
-### 3 minute video: [@YouTube](https://youtu.be/UwQO7I1e_y8)  
+#### Website: [SolarSurveilDBIT.in](https://SolarSurveilDBIT.in)
+#### Analytical Web Device Management & Dashboard: Click [Sign Up / Login here](https://solarsurveildbit.in/index.html#services)
+#### Detailed Video: [@YouTube](https://youtu.be/FI_uH7AuqU8)  
+#### 3 minute video: [@YouTube](https://youtu.be/UwQO7I1e_y8)  
 
 ## Project Team Members:      
 ### Students & Faculty of Don Bosco Institute of Technology, Mumbai, India [www.dbit.in](https://dbit.in)
