@@ -21,10 +21,10 @@
 
 **Faculty Team Members**
 1. Dr. Ashwini Kotrashetti
-2. Mr. Tayyabali Sayyad
-3. Ms. Gejo George
-4. Ms. Freda Carvalho
-5. Mr. Jithin Saji Isaac (Project Guide)
+2. Tayyabali Sayyad
+3. Gejo George
+4. Freda Carvalho
+5. Jithin Saji Isaac (Project Guide)
 
 ## Project repository (PCB Design, Firmware Design & Web application code)
 
@@ -45,7 +45,7 @@
  [ESP32 ATM90E26 & EmonLib PCB](https://github.com/jithinsisaac/LoRa-PV-RMS-SolarSurveil/tree/main/PCB_ESP32_ATM90E26_Board) by [Adish Sthalekar](https://twitter.com/)     
  [Grafana, InfluxDB & NodeRED integrations](https://solarsurveildbit.in/blogak.html) by [Aparna Kulkarni](https://twitter.com/)  
  Project Ideation & Mentoring by [Dr. Ashwini Kotrashetti](http://ashwiniprofile-dbit.blogspot.com/)  
- Web application mentorin by [Mr. Tayyabali Sayyad](https://tayyabali.in/)  
- Project Guide, Solar Lab setup & Embedded-IoT, LoRaWAN & PCB design expertise by [Mr. Jithin Saji Isaac](https://jithinsisaac.github.io/)   
+ Web application mentorin by [Tayyabali Sayyad](https://tayyabali.in/)  
+ Project Guide, Solar Lab setup & Embedded-IoT, LoRaWAN & PCB design expertise by [Jithin Saji Isaac](https://jithinsisaac.github.io/)   
  
  
