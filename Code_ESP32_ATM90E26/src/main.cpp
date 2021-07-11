@@ -1,154 +1,106 @@
-/* ESP32 MQTT with JSON
-   Libraries used: Nick O'Leary PubSubClient@2.8 & ArduinoJson@6.17.3
-   Author: Jithin Isaac  
-   16 April 2021 */
+/* 
+Adapted from & Credits: https://github.com/whatnick/ATM90E26_Arduino
+Status: Calibrating the ATM90E26 is a challenge. EmonLib is preferred.
+Note: Whatnick has used ESP8266 for UART. Attempting to use ESP32. 
+*/
 
 #include <Arduino.h>
-#include <Wifi.h>
-#include <PubSubClient.h>
-#include <ArduinoJson.h>
-#include "EmonLib.h" // Include Emon Library
+#include <energyic_UART.h>
+#if !defined(ARDUINO_ARCH_SAMD) && !defined(ESP32)
+#include <SoftwareSerial.h>
+#else
 
-EnergyMonitor emon1; // Create an instance
+#endif
 
-const char *ssid = "Slomo_2.4GHz";
-const char *pass = "TW@pLLj6de!Yft%^9yuF";
-const char *brokerUser = "user_test";
-const char *brokerPass = "extc@dbit";
-const char *broker_url = "mqttbroker.dblabs.in";
-const uint16_t broker_port = 1883;
-const char *outTopic = "esp32/lora-pv-rms/tx";
-const char *inTopic = "esp32/lora-pv-rms/rx";
+#if defined(ESP8266)
+//NOTE: Version 1.0 and 1.1 of featherwing use pins 14,12
+//version 1.2 and above using pins 13,14
+//SoftwareSerial ATMSerial(14, 12, false, 256); //RX, TX v1.0-1.1
+//SoftwareSerial ATMSerial(13, 14, false, 256); //RX, TX v1.2+
+SoftwareSerial ATMSerial(D4, D3, false, 256); //NodeMCU v1.0
+#endif 
 
-WiFiClient espClient;
-PubSubClient client(espClient);
-long currentTime, lastTime = 0;
-int count = 0;
-char messages[50];
+#ifdef __AVR_ATmega32U4__ //32u4 board
+SoftwareSerial ATMSerial(11, 13); //RX, TX
+#endif 
 
-void setupWifi()
-{
-  delay(100);
-  Serial.print("\nConnecting to WiFi AP: ");
-  Serial.println(ssid);
+#if defined(ARDUINO_ARCH_SAMD)
+#include "wiring_private.h" // pinPeripheral() function
+//Feather M0 
+#define PIN_SerialATM_RX       12ul
+#define PIN_SerialATM_TX       11ul
+#define PAD_SerialATM_RX       (SERCOM_RX_PAD_3)
+#define PAD_SerialATM_TX       (UART_TX_PAD_0)
 
-  WiFi.begin(ssid, pass);
+// Using SERCOM1 on M0 to communicate with ATM90E26
+Uart ATMSerial(&sercom1, PIN_SerialATM_RX, PIN_SerialATM_TX, PAD_SerialATM_RX, PAD_SerialATM_TX);
+#endif
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(100);
-    Serial.print("-");
-  }
+#if defined(ESP32)
+#define PIN_SerialATM_RX       16   //RX pin, USING UART2
+#define PIN_SerialATM_TX       17   //TX pin, USING UART2
+HardwareSerial ATMSerial(2);        //1 = just hardware serial number. ESP32 supports 3 hardware serials. UART 0 usually for flashing.
+#endif
 
-  Serial.print("\nConnected to WiFi AP: ");
-  Serial.println(ssid);
-}
+ATM90E26_UART eic(&ATMSerial);
 
-void reconnect()
-{
-  while (!client.connected())
-  {
-    Serial.print("\nConnecting to MQTT Broker @");
-    Serial.println(broker_url);
-    delay(100);
-    Serial.print("-");
-    if (client.connect("unique_client_name123", brokerUser, brokerPass))
-    {
-      Serial.print("\nConnected to MQTT Broker @");
-      Serial.println(broker_url);
-      client.subscribe(inTopic);
-    }
-    else
-    {
-      Serial.print("MQTT connection failed, rc=");
-      Serial.print(client.state());
-      Serial.println("\n Trying to reconnect in 5 seconds.");
-      delay(5000);
-    }
-  }
-  Serial.println();
-}
-
-void callback(char *topic, byte *payload, unsigned int length)
-{
-  Serial.print("Subscribing Payload: ");
-  Serial.print(topic);
-  Serial.print(": '");
-  for (int i = 0; i < length; i++)
-  {
-    Serial.print((char)payload[i]);
-  }
-  Serial.println("'");
-}
-
-void setup()
-{
-  // put your setup code here, to run once:
+void setup() {
   Serial.begin(115200);
-  emon1.voltage(35, 220, 1.7); // Voltage: input pin, calibration, phase_shift
-  emon1.current(34, 112);      // Current: input pin, calibration.
-  analogReadResolution(ADC_BITS);
-  setupWifi();
-  client.setServer(broker_url, broker_port);
-  client.setCallback(callback);
+  Serial.println("\nATM90E26 UART Test Started");
+  
+  #if defined(ARDUINO_ARCH_SAMD)
+  pinPeripheral(PIN_SerialATM_RX, PIO_SERCOM);
+  pinPeripheral(PIN_SerialATM_TX, PIO_SERCOM);
+  #endif
+
+  #if defined(ESP32)
+  //Must begin ATMSerial before IC init supplying baud rate, serial config, and RX TX pins
+  ATMSerial.begin(9600, SERIAL_8N1, PIN_SerialATM_RX, PIN_SerialATM_TX);
+  #else
+  //Must begin ATMSerial before IC init
+  ATMSerial.begin(9600);
+  #endif
+  
+  eic.InitEnergyIC();
+  delay(1000);
 }
 
-unsigned long previousMillis = 0;
-int interval = 10000;
-float realPower, apparentPower, powerFactor, supplyVoltage, Irms;
-
-int startV;
-
-void loop()
-{
-  if (!client.connected())
+void loop() {
+  /*Repeatedly fetch some values from the ATM90E26 */
+  Serial.print("Sys Status:");
+  unsigned short s_status = eic.GetSysStatus();
+  if(s_status == 0xFFFF)
   {
-    reconnect();
+	#if defined(ESP8266)
+    //Read failed reset ESP, this is heavy
+    ESP.restart();
+	#endif
   }
-  client.loop();
-
-  /* *********************** */
-  /* JSON Payload generation */
-  /* *********************** */
-
-  emon1.calcVI(20, 2000); // Calculate all. No.of half wavelengths (crossings), time-out
-  emon1.serialprint();    // Print out all variables (realpower, apparent power, Vrms, Irms, power factor)
-
-  realPower = emon1.realPower;         //extract Real Power into variable
-  apparentPower = emon1.apparentPower; //extract Apparent Power into variable
-  powerFactor = emon1.powerFactor;     //extract Power Factor into Variable
-  supplyVoltage = emon1.Vrms;          //extract Vrms into Variable
-  Irms = emon1.Irms;                   //extract Irms into Variable
-
-  StaticJsonDocument<200> JSONbuffer;
-
-  long milisec = millis();
-  long time = milisec / 1000; // convert milliseconds to seconds
-
-  // Add values in the JSONbuffer document
-  JSONbuffer["NodeID"] = "SS_AC_Node1";
-  JSONbuffer["Voltage"] = supplyVoltage;
-  JSONbuffer["Current"] = Irms;
-  JSONbuffer["Energy"] = (realPower * time) / (1000 * 3600); // add energy logic (pending!!!)
-
-  // Generate the minified Serialized JSON and send it to the Serial port for debugging
-  Serial.println();
-  //serializeJsonPretty(JSONbuffer, Serial);
-
-  char jsonBufferMQTT[256]; //jsonBufferMQTT is the MQTT Payload
-  serializeJson(JSONbuffer, jsonBufferMQTT);
-
-  /* ********************** */
-  /* JSON Tx via MQTT */
-  /* ********************** */
-
-  currentTime = millis();
-  if (currentTime - lastTime > 5000)
-  {
-    Serial.print("Publishing JSON Message: ");
-    Serial.println(jsonBufferMQTT); //Prints the JSON Payload that we are sending
-    client.publish(outTopic, jsonBufferMQTT);
-    lastTime = millis();
-    Serial.println(lastTime);
-  }
+  Serial.println(eic.GetSysStatus(),HEX);
+  delay(10);
+  Serial.print("Meter Status:");
+  Serial.println(eic.GetMeterStatus(),HEX);
+  delay(10);
+  Serial.print("Voltage:");
+  #if defined(ESP32)
+  //ESP32 or maybe another MCU support formatting float/double value
+  Serial.printf("%.4f V\n", eic.GetLineVoltage());
+  #else
+  Serial.println(eic.GetLineVoltage());
+  #endif
+  delay(10);
+  Serial.print("Current:");
+  #if defined(ESP32)
+  //ESP32 or maybe another MCU support formatting float/double value
+  Serial.printf("%.4f A\n", eic.GetLineCurrent());
+  #else
+  Serial.println(eic.GetLineCurrent());
+  #endif
+  delay(10);
+  Serial.print("Active power:");
+  Serial.println(eic.GetActivePower());
+  delay(10);
+  Serial.print("p.f.:");
+  Serial.println(eic.GetPowerFactor());
+  delay(1000);
 }
