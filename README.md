@@ -28,15 +28,21 @@
 
 ## Project repository (PCB Design, Firmware Design & Web application code)
 
-**Software License:** MIT  
-**PCB Design License:** CC BY-SA 4.0  
-**Documentation License:** CC BY-SA 4.0  
+
 
 - All the source code required for PCB design, firmware development & web application development has been open sourced. Make maximum use of the same!
 
 - All relevant information of the project can be obtained from the official website of the project at [SolarSurveilDBIT.in](https://SolarSurveilDBIT.in)  
 
 - A seperate resources tab has been specially created on the website detailing each section of the project. Visit the [Solar Surveil Resources section](https://solarsurveildbit.in/resources.html)  
+
+## Licenses
+
+![License](/OpenSourceLicense.png)
+
+**Software/Firmware License:** GNU AGPL v3.0 license. See the LICENSE file for more information. 
+**PCB Design Hardware License:** CERN Open Hardware Licence v1.2. See the LICENSE_HARDWARE file for more information.
+**Documentation License:** CC BY-SA 4.0  
 
 ## Credits
 
