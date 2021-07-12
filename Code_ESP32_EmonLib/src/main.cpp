@@ -9,7 +9,8 @@
 #include <ArduinoJson.h>
 #include "EmonLib.h" // Include Emon Library
 
-EnergyMonitor emon1; // Create an instance
+EnergyMonitor emon1;         // Create an instance
+#define MEAS_METHOD_C0_CV1 0 //0 for current only, 1 for voltage-current
 
 const char *ssid = "Slomo_2.4GHz";
 const char *pass = "TW@pLLj6de!Yft%^9yuF";
@@ -22,10 +23,7 @@ const char *inTopic = "esp32/lora-pv-rms/rx";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-long currentTime, lastTime = 0;
-int count = 0;
-char messages[50];
-
+ 
 void setupWifi()
 {
   delay(100);
@@ -85,19 +83,31 @@ void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  emon1.voltage(35, 220, 1.7); // Voltage: input pin, calibration, phase_shift
-  emon1.current(34, 112);      // Current: input pin, calibration.
   analogReadResolution(ADC_BITS);
   setupWifi();
   client.setServer(broker_url, broker_port);
   client.setCallback(callback);
-}
 
-unsigned long previousMillis = 0;
+  if (!MEAS_METHOD_C0_CV1)
+  {
+    emon1.current(34, 111.1); // Current: input pin, calibration.
+    Serial.println("Current only method, with apparent power.");
+  }
+
+  if (MEAS_METHOD_C0_CV1)
+  {
+    emon1.voltage(35, 220, 1.7); // Voltage: input pin, calibration, phase_shift
+    emon1.current(34, 112);      // Current: input pin, calibration.
+    Serial.println("Current & Voltage method, with real & apparent power.");
+  }
+
+}
+ 
 int interval = 10000;
 float realPower, apparentPower, powerFactor, supplyVoltage, Irms;
-
-int startV;
+double energyWh=0,energykWh=0;  
+unsigned long currentTimeE, lastTimeE = 0; //For Energy measurement
+unsigned long currentTimeS, lastTimeS = 0; //For data Sending interval
 
 void loop()
 {
@@ -108,28 +118,62 @@ void loop()
   client.loop();
 
   /* *********************** */
+  /* Energy Payload generation */
+  /* *********************** */
+
+  //CURRENT ONLY METHOD WITH APPARENT POWER
+  if (!MEAS_METHOD_C0_CV1)
+  {
+    Irms = emon1.calcIrms(1480); // Calculate Irms only
+    apparentPower = Irms * 230.0 ;
+    Serial.print("aP: ");
+    Serial.print(apparentPower); // Apparent power
+    Serial.print(" ");
+    Serial.print("Irms: ");
+    Serial.println(Irms); // Irms
+  }
+
+  //CURRENT & VOLTAGE METHOD WITH REAL & APPARENT POWER
+  if (MEAS_METHOD_C0_CV1)
+  {
+    emon1.calcVI(20, 2000); // Calculate all. No.of half wavelengths (crossings), time-out
+    emon1.serialprint();    // Print out all variables (realpower, apparent power, Vrms, Irms, power factor)
+
+    realPower = emon1.realPower;         //extract Real Power into variable
+    apparentPower = emon1.apparentPower; //extract Apparent Power into variable
+    powerFactor = emon1.powerFactor;     //extract Power Factor into Variable
+    supplyVoltage = emon1.Vrms;          //extract Vrms into Variable
+    Irms = emon1.Irms;                   //extract Irms into Variable
+  }
+
+  currentTimeE = millis(); 
+  if (!MEAS_METHOD_C0_CV1) 
+    energyWh += (apparentPower * (currentTimeE - lastTimeE)) / (3600*1000);
+  if (MEAS_METHOD_C0_CV1) 
+    energyWh += (realPower * (millis() - lastTimeE)) / (3600*1000);  
+  
+  energykWh =  energyWh / 1000;
+  lastTimeE = currentTimeE;
+   
+
+  /* *********************** */
   /* JSON Payload generation */
   /* *********************** */
 
-  emon1.calcVI(20, 2000); // Calculate all. No.of half wavelengths (crossings), time-out
-  emon1.serialprint();    // Print out all variables (realpower, apparent power, Vrms, Irms, power factor)
-
-  realPower = emon1.realPower;         //extract Real Power into variable
-  apparentPower = emon1.apparentPower; //extract Apparent Power into variable
-  powerFactor = emon1.powerFactor;     //extract Power Factor into Variable
-  supplyVoltage = emon1.Vrms;          //extract Vrms into Variable
-  Irms = emon1.Irms;                   //extract Irms into Variable
-
   StaticJsonDocument<200> JSONbuffer;
-
-  long milisec = millis();
-  long time = milisec / 1000; // convert milliseconds to seconds
 
   // Add values in the JSONbuffer document
   JSONbuffer["NodeID"] = "SS_AC_Node1";
   JSONbuffer["Voltage"] = supplyVoltage;
   JSONbuffer["Current"] = Irms;
-  JSONbuffer["Energy"] = (realPower * time) / (1000 * 3600); // add energy logic (pending!!!)
+  JSONbuffer["Apparent Power"] = apparentPower;
+  JSONbuffer["Real Power"] = realPower;
+  JSONbuffer["Power factor"] = powerFactor;
+  if (!MEAS_METHOD_C0_CV1) 
+    JSONbuffer["Energy Wh"] = energyWh; 
+  if (MEAS_METHOD_C0_CV1) 
+    JSONbuffer["Energy Wh"] = energyWh;  
+  JSONbuffer["Energy kWh"] =energykWh;
 
   // Generate the minified Serialized JSON and send it to the Serial port for debugging
   Serial.println();
@@ -142,13 +186,13 @@ void loop()
   /* JSON Tx via MQTT */
   /* ********************** */
 
-  currentTime = millis();
-  if (currentTime - lastTime > 5000)
+  currentTimeS = millis();
+  if (currentTimeS - lastTimeS > 5000)
   {
     Serial.print("Publishing JSON Message: ");
     Serial.println(jsonBufferMQTT); //Prints the JSON Payload that we are sending
     client.publish(outTopic, jsonBufferMQTT);
-    lastTime = millis();
-    Serial.println(lastTime);
+    lastTimeS = currentTimeS;
+    //Serial.println(lastTimeS);
   }
 }
