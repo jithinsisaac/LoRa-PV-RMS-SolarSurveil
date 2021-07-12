@@ -40,9 +40,9 @@
 
 ![License](/OpenSourceLicense.png)
 
-**Software/Firmware License:** GNU AGPL v3.0 license. See the LICENSE file for more information.   
-**PCB Design Hardware License:** CERN Open Hardware Licence v1.2. See the LICENSE_HARDWARE file for more information.  
-**Documentation License:** CC BY-SA 4.0    
+- **Software/Firmware License:** GNU AGPL v3.0 license. See the LICENSE file for more information.   
+- **PCB Design Hardware License:** CERN Open Hardware Licence v1.2. See the LICENSE_HARDWARE file for more information.  
+- **Documentation License:** CC BY-SA 4.0    
 
 ## Credits
 
