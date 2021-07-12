@@ -52,6 +52,6 @@
 - [Grafana, InfluxDB & NodeRED integrations](https://solarsurveildbit.in/blogak.html) by [Aparna Kulkarni](https://twitter.com/)  
 - Project Ideation & Mentoring by [Dr. Ashwini Kotrashetti](http://ashwiniprofile-dbit.blogspot.com/)  
 - Web application mentoring by [Tayyabali Sayyad](https://tayyabali.in/)  
-- Project Guide, Solar Lab setup, Embedded-IoT, [LoRaWAN](https://github.com/search?q=user%3Ajithinsisaac+lora) & PCB design expertise by [Jithin Saji Isaac](https://jithinsisaac.github.io/)   
+- Project Guide, Solar Lab setup, Embedded-IoT, [LoRaWAN](https://github.com/search?q=user%3Ajithinsisaac+lora) & PCB design expertise by [Jithin Saji Isaac](https://jithinsisaac.github.io/)   [@jithinisaac](https://twitter.com/jithinisaac)
  
  
