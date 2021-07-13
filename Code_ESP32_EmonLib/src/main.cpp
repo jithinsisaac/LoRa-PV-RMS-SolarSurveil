@@ -7,13 +7,14 @@
 #include <Wifi.h>
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
-#include "EmonLib.h" // Include Emon Library
+#include "EmonLib.h" // Include Emon Library 
+
+#include <SPIFFS.h>
+#include <WiFiSettings.h> //Using ESP-WiFiSettings by Juerd Waalboer
 
 EnergyMonitor emon1;         // Create an instance
 #define MEAS_METHOD_C0_CV1 0 //0 for current only, 1 for voltage-current
 
-const char *ssid = "Slomo_2.4GHz";
-const char *pass = "TW@pLLj6de!Yft%^9yuF";
 const char *brokerUser = "user_test";
 const char *brokerPass = "extc@dbit";
 const char *broker_url = "mqttbroker.dblabs.in";
@@ -28,9 +29,9 @@ void setupWifi()
 {
   delay(100);
   Serial.print("\nConnecting to WiFi AP: ");
-  Serial.println(ssid);
+  //Serial.println(ssid);
 
-  WiFi.begin(ssid, pass);
+  //WiFi.begin(ssid, pass);
 
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -39,7 +40,7 @@ void setupWifi()
   }
 
   Serial.print("\nConnected to WiFi AP: ");
-  Serial.println(ssid);
+  //Serial.println(ssid);
 }
 
 void reconnect()
@@ -83,16 +84,23 @@ void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  analogReadResolution(ADC_BITS);
-
-  SPIFFS.begin(true); // Will format on the first run after failing to mount
+  analogReadResolution(ADC_BITS); 
+ 
+  //SPIFFS.format();
+  SPIFFS.begin(true);  // Will format on the first run after failing to mount
 
   // Use stored credentials to connect to your WiFi access point.
   // If no credentials are stored or if the access point is out of reach,
   // an access point will be started with a captive portal to configure WiFi.
+  // This is valid for a fresh firmware write on the esp32. 
+  // Once wifi is set in this, then it just keeps reading from the eeprom
+  // Doesnt ask for new password, even on fresh firmware rewrite. To enable that just do SPIFFS.format() before SPIFFS.begin(true); 
   WiFiSettings.connect();
 
-  setupWifi();
+  Serial.println("WiFi connected");
+
+  //setupWifi(); //Normal WiFi.begin code, if not using WiFi Manager library
+
   client.setServer(broker_url, broker_port);
   client.setCallback(callback);
 
