@@ -121,8 +121,8 @@ void setup()
 int interval = 10000;
 float realPower, apparentPower, powerFactor, supplyVoltage, Irms;
 double energyWh = 0, energykWh = 0;
-unsigned long currentTimeE, lastTimeE = 0; //For Energy measurement
-unsigned long currentTimeS, lastTimeS = 0; //For data Sending interval
+unsigned long previousTimeE = 0; //For Energy measurement
+unsigned long previousTimeS = 0; //For data Sending interval
 
 void loop()
 {
@@ -161,14 +161,14 @@ void loop()
     Irms = emon1.Irms;                   //extract Irms into Variable
   }
 
-  currentTimeE = millis();
+  unsigned long currentTimeE = millis();
   if (!MEAS_METHOD_C0_CV1)
-    energyWh += (apparentPower * (currentTimeE - lastTimeE)) / (3600 * 1000);
+    energyWh += (apparentPower * (unsigned long)(currentTimeE - previousTimeE)) / (3600 * 1000);
   if (MEAS_METHOD_C0_CV1)
-    energyWh += (realPower * (currentTimeE - lastTimeE)) / (3600 * 1000);
+    energyWh += (realPower * (unsigned long)(currentTimeE - previousTimeE)) / (3600 * 1000);
 
   energykWh = energyWh / 1000;
-  lastTimeE = currentTimeE;
+  previousTimeE = currentTimeE;
 
   /* *********************** */
   /* JSON Payload generation */
@@ -200,13 +200,13 @@ void loop()
   /* JSON Tx via MQTT */
   /* ********************** */
 
-  currentTimeS = millis();
-  if (currentTimeS - lastTimeS > 5000)
+  unsigned long currentTimeS = millis();
+  if ((unsigned long)(currentTimeS - previousTimeS) > 5000)
   {
     Serial.print("Publishing JSON Message: ");
     Serial.println(jsonBufferMQTT); //Prints the JSON Payload that we are sending
     client.publish(outTopic, jsonBufferMQTT);
-    lastTimeS = currentTimeS;
-    //Serial.println(lastTimeS);
+    previousTimeS = currentTimeS;
+    //Serial.println(previousTimeS);
   }
 }
