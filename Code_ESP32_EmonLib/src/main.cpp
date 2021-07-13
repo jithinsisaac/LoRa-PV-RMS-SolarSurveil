@@ -23,7 +23,7 @@ const char *inTopic = "esp32/lora-pv-rms/rx";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
- 
+
 void setupWifi()
 {
   delay(100);
@@ -84,28 +84,35 @@ void setup()
   // put your setup code here, to run once:
   Serial.begin(115200);
   analogReadResolution(ADC_BITS);
+
+  SPIFFS.begin(true); // Will format on the first run after failing to mount
+
+  // Use stored credentials to connect to your WiFi access point.
+  // If no credentials are stored or if the access point is out of reach,
+  // an access point will be started with a captive portal to configure WiFi.
+  WiFiSettings.connect();
+
   setupWifi();
   client.setServer(broker_url, broker_port);
   client.setCallback(callback);
 
   if (!MEAS_METHOD_C0_CV1)
   {
-    emon1.current(34, 111.1); // Current: input pin, calibration.
+    emon1.current(34, 70); // Current: input pin, calibration.  emon1.current(1, 111.1);
     Serial.println("Current only method, with apparent power.");
   }
 
   if (MEAS_METHOD_C0_CV1)
   {
-    emon1.voltage(35, 220, 1.7); // Voltage: input pin, calibration, phase_shift
-    emon1.current(34, 112);      // Current: input pin, calibration.
+    emon1.voltage(35, 234.26, 1.7); // Voltage: input pin, calibration, phase_shift
+    emon1.current(34, 111.1);       // Current: input pin, calibration.
     Serial.println("Current & Voltage method, with real & apparent power.");
   }
-
 }
- 
+
 int interval = 10000;
 float realPower, apparentPower, powerFactor, supplyVoltage, Irms;
-double energyWh=0,energykWh=0;  
+double energyWh = 0, energykWh = 0;
 unsigned long currentTimeE, lastTimeE = 0; //For Energy measurement
 unsigned long currentTimeS, lastTimeS = 0; //For data Sending interval
 
@@ -125,7 +132,7 @@ void loop()
   if (!MEAS_METHOD_C0_CV1)
   {
     Irms = emon1.calcIrms(1480); // Calculate Irms only
-    apparentPower = Irms * 230.0 ;
+    apparentPower = Irms * 230.0;
     Serial.print("aP: ");
     Serial.print(apparentPower); // Apparent power
     Serial.print(" ");
@@ -146,15 +153,14 @@ void loop()
     Irms = emon1.Irms;                   //extract Irms into Variable
   }
 
-  currentTimeE = millis(); 
-  if (!MEAS_METHOD_C0_CV1) 
-    energyWh += (apparentPower * (currentTimeE - lastTimeE)) / (3600*1000);
-  if (MEAS_METHOD_C0_CV1) 
-    energyWh += (realPower * (millis() - lastTimeE)) / (3600*1000);  
-  
-  energykWh =  energyWh / 1000;
+  currentTimeE = millis();
+  if (!MEAS_METHOD_C0_CV1)
+    energyWh += (apparentPower * (currentTimeE - lastTimeE)) / (3600 * 1000);
+  if (MEAS_METHOD_C0_CV1)
+    energyWh += (realPower * (currentTimeE - lastTimeE)) / (3600 * 1000);
+
+  energykWh = energyWh / 1000;
   lastTimeE = currentTimeE;
-   
 
   /* *********************** */
   /* JSON Payload generation */
@@ -169,11 +175,11 @@ void loop()
   JSONbuffer["Apparent Power"] = apparentPower;
   JSONbuffer["Real Power"] = realPower;
   JSONbuffer["Power factor"] = powerFactor;
-  if (!MEAS_METHOD_C0_CV1) 
-    JSONbuffer["Energy Wh"] = energyWh; 
-  if (MEAS_METHOD_C0_CV1) 
-    JSONbuffer["Energy Wh"] = energyWh;  
-  JSONbuffer["Energy kWh"] =energykWh;
+  if (!MEAS_METHOD_C0_CV1)
+    JSONbuffer["Energy Wh"] = energyWh;
+  if (MEAS_METHOD_C0_CV1)
+    JSONbuffer["Energy Wh"] = energyWh;
+  JSONbuffer["Energy kWh"] = energykWh;
 
   // Generate the minified Serialized JSON and send it to the Serial port for debugging
   Serial.println();
